@@ -1,0 +1,4 @@
+interface:
+  display_name: "GitHub Repo Discovery"
+  short_description: "Discover trending GitHub repos with README summaries"
+  default_prompt: "Use $github-repo-discovery to show this week's top new GitHub repos with plain-language summaries."
