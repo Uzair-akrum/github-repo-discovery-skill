@@ -4,7 +4,7 @@
 
 | Skill (folder) | Install name | Description |
 | --- | --- | --- |
-| **github-repo-discovery** | `github-repo-discovery` | Find public GitHub repos by stars, language, topic, and dates. Fetches READMEs via the GitHub API (never clones). Default with no filters: top **10** repos created in the **last 7 days**, sorted by stars. Agent replies with boxed plain-language summaries. Requires `gh auth login` or `GITHUB_TOKEN`. |
+| **github-repo-discovery** | `github-repo-discovery` | Find public GitHub repos by stars, language, topic, and dates. Fetches READMEs via the GitHub API (never clones). Default with no filters: top **10** repos created in the **last 7 days**, sorted by stars. Agent replies with boxed plain-language summaries. Requires `curl` and `GITHUB_TOKEN`. |
 
 ## Install
 

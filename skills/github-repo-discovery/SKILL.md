@@ -5,12 +5,12 @@ description: >-
   fetch README content via the GitHub API without cloning; reply with boxed plain-language
   summaries. Use when the user wants weekly trending repos, niche repo search, star or
   date filtered discovery, or README-based recommendations. Default with no filters: top
-  10 repos created in the last 7 days sorted by stars. Requires gh auth or GITHUB_TOKEN.
+  10 repos created in the last 7 days sorted by stars. Requires curl and GITHUB_TOKEN.
 license: MIT
 metadata:
   short-description: Weekly GitHub repo discovery with README summaries
   hermes:
-    version: 1.4.0
+    version: 1.5.0
     author: uzair
     tags: [GitHub, Repositories, Discovery, Search, Stars, Research]
     related_skills: [github-auth, github-repo-management]
@@ -31,13 +31,13 @@ README summaries are always implied unless the user asks for metadata-only (`--n
 
 ## Prerequisites
 
-- GitHub auth via `gh auth login` (preferred) or `GITHUB_TOKEN` in the environment
-- See `github-auth` if auth is missing
+- `curl` (built in on Linux, macOS, and modern Windows)
+- GitHub auth via `GITHUB_TOKEN` in the environment (or `gh auth login` if GitHub CLI is already installed)
 
 ## Helper script
 
 ```bash
-python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py [query] [options]
+bash ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.sh [query] [options]
 ```
 
 `HERMES_SKILL_DIR` is the directory containing this SKILL.md.
@@ -55,7 +55,7 @@ python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py [query] [options]
 1. **Use only the current user request** — do not carry keywords from earlier turns.
 2. **Empty prompt** → run the script with **no arguments** (weekly top 10).
 3. **Run at most twice.** First run to stdout. If output truncates (~50KB), re-run **once** with `--readme-chars 2500`; if still truncated, halve `--limit`. Never run 3+ times.
-4. **No file writes** unless the user asks to save — no `-o /tmp/...`, no `python3 -c` parsing.
+4. **No file writes** unless the user asks to save — no `-o /tmp/...`, no ad-hoc parsing scripts.
 5. **Prefer script flags** (`--min-stars`, `--created-after`, `--pushed-after`) over hand-built query strings.
 6. **Always fetch READMEs** with `--format markdown` unless user asked for metadata-only.
 7. **Trust stderr** — check `# results: N` before claiming zero matches.
@@ -90,22 +90,22 @@ python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py [query] [options]
 
 ```bash
 # Default: top 10 repos created in the last 7 days (no args needed)
-python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py
+bash ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.sh
 
 # Standard discovery with README fetch
-python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py \
+bash ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.sh \
   --created-after 2026-05-25 --min-stars 300 --sort stars --limit 10
 
 # Niche search
-python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py "agent framework" \
+bash ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.sh "agent framework" \
   --language python --min-stars 1000 --limit 8
 
 # Longer README fetch for fewer repos
-python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py "rag" \
+bash ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.sh "rag" \
   --language python --min-stars 2000 --limit 5 --readme-chars 15000
 
 # Metadata-only quick scan
-python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py "database" \
+bash ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.sh "database" \
   --min-stars 5000 --no-include-readme --format table --limit 20
 ```
 
@@ -138,7 +138,7 @@ python3 ${HERMES_SKILL_DIR}/scripts/github-repo-summaries.py "database" \
 
 ## Notes
 
-- README fetch = 1 API call per repo (parallelized, ~5s for 10 repos)
+- README fetch = 1 API call per repo (sequential, ~3–8s for 10 repos)
 - Script prints `# query:`, `# results:`, and `# mode: weekly` on stderr when using defaults
 - Non-404 API failures print `# warn:` on stderr
 - **No auto-save.** Summaries live in the chat unless the user asks to export
