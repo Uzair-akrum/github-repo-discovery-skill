@@ -9,14 +9,13 @@ Compatible with [Hermes Agent](https://github.com/NousResearch/hermes-agent) and
 ### Hermes Agent
 
 ```bash
-hermes skills tap add Uzair-akrum/github-repo-discovery-skill
-hermes skills install Uzair-akrum/github-repo-discovery-skill/github/github-repo-discovery
+hermes skills install Uzair-akrum/github-repo-discovery-skill
 ```
 
 Copy locally for development:
 
 ```bash
-cp -a github/github-repo-discovery ~/.hermes/skills/github/github-repo-discovery
+git clone https://github.com/Uzair-akrum/github-repo-discovery-skill.git ~/.hermes/skills/github/github-repo-discovery
 ```
 
 Use in TUI: `/github-repo-discovery`
@@ -24,7 +23,7 @@ Use in TUI: `/github-repo-discovery`
 ### Cursor / Codex / skills.sh
 
 ```bash
-npx skills add Uzair-akrum/github-repo-discovery-skill@github-repo-discovery
+npx skills add Uzair-akrum/github-repo-discovery-skill
 ```
 
 ### Prerequisites
@@ -35,7 +34,6 @@ npx skills add Uzair-akrum/github-repo-discovery-skill@github-repo-discovery
 ## Validate
 
 ```bash
-cd github/github-repo-discovery
 python3 tests/test_github_repo_summaries.py
 python3 ~/.cursor/skills/skill-creator/scripts/quick_validate.py .
 ```
