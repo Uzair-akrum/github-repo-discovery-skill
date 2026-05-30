@@ -1,21 +1,16 @@
-# Hermes Skills by uzair
+# github-repo-discovery (Hermes skill)
 
-Personal [Hermes Agent](https://github.com/NousResearch/hermes-agent) skills — compatible with [agentskills.io](https://agentskills.io/) layout.
+Discover GitHub repos by stars, language, topic, and dates; fetch READMEs via API (no clone); deliver boxed plain-language summaries.
 
-## Skills
-
-| Skill | Description |
-|-------|-------------|
-| [github-repo-discovery](./github/github-repo-discovery/) | Discover GitHub repos by stars/filters; README summaries without cloning |
+Compatible with [Hermes Agent](https://github.com/NousResearch/hermes-agent) and [agentskills.io](https://agentskills.io/).
 
 ## Install
 
 ### Hermes Agent
 
 ```bash
-# After pushing this repo to GitHub (replace OWNER with your username):
-hermes skills tap add Uzair-akrum/hermes-skills
-hermes skills install Uzair-akrum/hermes-skills/github/github-repo-discovery
+hermes skills tap add Uzair-akrum/github-repo-discovery-skill
+hermes skills install Uzair-akrum/github-repo-discovery-skill/github/github-repo-discovery
 ```
 
 Copy locally for development:
@@ -29,10 +24,10 @@ Use in TUI: `/github-repo-discovery`
 ### Cursor / Codex / skills.sh
 
 ```bash
-npx skills add Uzair-akrum/hermes-skills@github-repo-discovery
+npx skills add Uzair-akrum/github-repo-discovery-skill@github-repo-discovery
 ```
 
-### Prerequisites (github-repo-discovery)
+### Prerequisites
 
 - `gh auth login` or `GITHUB_TOKEN`
 - Python 3.10+
@@ -40,8 +35,9 @@ npx skills add Uzair-akrum/hermes-skills@github-repo-discovery
 ## Validate
 
 ```bash
-python3 tests/test_github_repo_summaries.py   # from skill directory
-python3 ~/.cursor/skills/skill-creator/scripts/quick_validate.py github/github-repo-discovery
+cd github/github-repo-discovery
+python3 tests/test_github_repo_summaries.py
+python3 ~/.cursor/skills/skill-creator/scripts/quick_validate.py .
 ```
 
 ## License
