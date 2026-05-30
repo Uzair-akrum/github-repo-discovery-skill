@@ -13,7 +13,7 @@ The `Install name` column is the exact value you pass after `@` when installing 
 ## Install
 
 ```bash
-npx skills add Uzair-akrum/github-repo-discovery-skill@github-repo-discovery
+npx skills add https://github.com/Uzair-akrum/github-repo-discovery-skill
 ```
 
 ## Validate
