@@ -14,8 +14,8 @@ Personal [Hermes Agent](https://github.com/NousResearch/hermes-agent) skills —
 
 ```bash
 # After pushing this repo to GitHub (replace OWNER with your username):
-hermes skills tap add OWNER/hermes-skills
-hermes skills install OWNER/hermes-skills/github/github-repo-discovery
+hermes skills tap add Uzair-akrum/hermes-skills
+hermes skills install Uzair-akrum/hermes-skills/github/github-repo-discovery
 ```
 
 Copy locally for development:
@@ -29,7 +29,7 @@ Use in TUI: `/github-repo-discovery`
 ### Cursor / Codex / skills.sh
 
 ```bash
-npx skills add OWNER/hermes-skills@github-repo-discovery
+npx skills add Uzair-akrum/hermes-skills@github-repo-discovery
 ```
 
 ### Prerequisites (github-repo-discovery)
