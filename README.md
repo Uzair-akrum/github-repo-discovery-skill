@@ -1,7 +1,5 @@
 # github-repo-discovery-skill
 
-Agent skills for GitHub repository discovery — compatible with [Hermes Agent](https://github.com/NousResearch/hermes-agent), [Cursor](https://cursor.com), [Codex](https://openai.com/codex), and [skills.sh](https://skills.sh/).
-
 ## Skills
 
 Each skill does one job; you do not need all of them at once. **Discovery skills** search and summarize repos from metadata and READMEs — no cloning.
