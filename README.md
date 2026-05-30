@@ -1,21 +1,22 @@
-# github-repo-discovery (Hermes skill)
+# github-repo-discovery-skill
 
-Discover GitHub repos by stars, language, topic, and dates; fetch READMEs via API (no clone); deliver boxed plain-language summaries.
+This repository publishes one Hermes skill: `github-repo-discovery`.
 
-Compatible with [Hermes Agent](https://github.com/NousResearch/hermes-agent) and [agentskills.io](https://agentskills.io/).
+The skill discovers GitHub repos by stars, language, topic, and dates; fetches READMEs via API without cloning; and lets the agent deliver boxed plain-language summaries.
 
 ## Install
 
 ### Hermes Agent
 
 ```bash
-hermes skills install Uzair-akrum/github-repo-discovery-skill
+hermes skills install Uzair-akrum/github-repo-discovery-skill/github-repo-discovery --force
 ```
 
 Copy locally for development:
 
 ```bash
-git clone https://github.com/Uzair-akrum/github-repo-discovery-skill.git ~/.hermes/skills/github/github-repo-discovery
+git clone https://github.com/Uzair-akrum/github-repo-discovery-skill.git
+cp -R github-repo-discovery-skill/github-repo-discovery ~/.hermes/skills/github-repo-discovery
 ```
 
 Use in TUI: `/github-repo-discovery`
@@ -23,7 +24,7 @@ Use in TUI: `/github-repo-discovery`
 ### Cursor / Codex / skills.sh
 
 ```bash
-npx skills add Uzair-akrum/github-repo-discovery-skill
+npx skills add https://github.com/Uzair-akrum/github-repo-discovery-skill --skill github-repo-discovery
 ```
 
 ### Prerequisites
@@ -34,10 +35,10 @@ npx skills add Uzair-akrum/github-repo-discovery-skill
 ## Validate
 
 ```bash
-python3 tests/test_github_repo_summaries.py
-python3 ~/.cursor/skills/skill-creator/scripts/quick_validate.py .
+python3 github-repo-discovery/tests/test_github_repo_summaries.py
+python3 ~/.cursor/skills/skill-creator/scripts/quick_validate.py github-repo-discovery
 ```
 
 ## License
 
-MIT — see [LICENSE](./LICENSE).
+MIT — see [github-repo-discovery/LICENSE](./github-repo-discovery/LICENSE).
