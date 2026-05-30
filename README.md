@@ -16,14 +16,6 @@ The `Install name` column is the exact value you pass after `@` when installing 
 npx skills add https://github.com/Uzair-akrum/github-repo-discovery-skill
 ```
 
-## Validate
-
-```bash
-cd skills/github-repo-discovery
-python3 tests/test_github_repo_summaries.py
-python3 ~/.cursor/skills/skill-creator/scripts/quick_validate.py .
-```
-
 ## License
 
 MIT — see [skills/github-repo-discovery/LICENSE](./skills/github-repo-discovery/LICENSE).
